@@ -1,0 +1,71 @@
+#####################################
+##### ArkhamUtils Configuration #####
+#####################################
+
+# Module Configuration
+modules:
+    
+    # This module stops players from being able to teleport while inside vehicles.
+    # This glitch stops a bug that can let a player using a hacked client load thousands of chunks.
+    VehicleTeleportGlitchFix:
+        enabled: true
+        
+    # This module checks the distance a player has moved every time they move a block.
+    # It will stop them moving if the distance in blocks moved is greater than the defined maxblockmove value.
+    # This can stop players using a hacked client from loading thousands of chunks.
+    MassChunkLoadMovementFix:
+        enabled: true
+        maxBlocksPerMovement: 25
+        
+    # This module will attempt to optimize the minecraft networking engine.
+    NettyOptimization:
+        enabled: true
+        
+    # This module listens for the creaturespawnevent and denys the spawn if the chunk has more creatures than set in the limits below.
+    # Setting a value to 0 will stop the mob spawning.
+    # Setting a value to -1 will mean no limit.
+    ChunkSpawnerLimiter:
+        enabled: false
+        maxMonstersPerChunk: -1
+        maxAnimalsPerChunk: -1
+        maxWaterCreaturesPerChunk: -1
+        maxAmbientCreaturesPerChunk: -1
+        
+    # This module will remove entitys every X seconds.
+    AutoEntityClear:
+        enabled: true
+        clearEverySeconds: 600
+        clearOptions:
+            monsters: false
+            animals: false
+            waterCreatures: true
+            ambientCreatures: true
+            emptyBoats: true
+            emptyMinecarts: true
+            fallingBlocks: true
+            experienceOrbs: true
+            droppedItems: true
+            snowball: true
+            fireball: true
+            ender-signal: true
+            dontRemoveItems: []
+        warningIntervals:
+        - 0
+        warningMessage:
+        - '&c'
+        clearMessage:
+        - '&f&l* &e&lALL ENTITIES HAVE BEEN CLEARED &f&l*'
+        forceClearCommands:
+        - '/lagg clear'
+        - '/lag clear'
+        - '/arkhamutils clear'
+        - '/utilsclear'
+        forceClearCommandPermission: 'arkhamutils.lagclear'
+        
+    # This module removes entitys when a chunk unloads.
+    ChunkUnloadEntityClear:
+        enabled: true
+        removeMonsters: true
+        removeAnimals: true
+        removeWaterCreatures: true
+        removeAmbient: true
